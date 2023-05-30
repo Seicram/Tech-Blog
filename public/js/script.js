@@ -1,58 +1,48 @@
-// JavaScript code for your application
+// Example code for script.js
 
-// Simulated data for blog posts
-const blogPosts = [
-    { title: 'First Blog Post', content: 'This is the content of the first blog post.' },
-    { title: 'Second Blog Post', content: 'This is the content of the second blog post.' },
-  ];
+// Example code for handling user logout
+const logoutBtn = document.getElementById('logout-btn');
+logoutBtn.addEventListener('click', () => {
+  // Perform logout logic, such as making a request to the server
+  // to destroy the user session or clear the local storage.
+  // Redirect the user to the login page or homepage after logout.
+  window.location.href = '/auth/logout';
+});
+
+// Example code for handling comment submission
+const commentForm = document.getElementById('comment-form');
+commentForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
   
-  // Function to display blog posts on the homepage
-  function displayBlogPosts() {
-    const blogPostsDiv = document.getElementById('blogPosts');
-  
-    // Clear the existing content
-    blogPostsDiv.innerHTML = '';
-  
-    // Iterate through the blog posts and create HTML elements for each
-    blogPosts.forEach((post) => {
-      const postDiv = document.createElement('div');
-      postDiv.classList.add('blog-post');
-  
-      const titleElement = document.createElement('h2');
-      titleElement.textContent = post.title;
-  
-      const contentElement = document.createElement('p');
-      contentElement.textContent = post.content;
-  
-      postDiv.appendChild(titleElement);
-      postDiv.appendChild(contentElement);
-  
-      blogPostsDiv.appendChild(postDiv);
+  // Get the comment text from the form
+  const commentInput = document.getElementById('comment-input');
+  const comment = commentInput.value.trim();
+
+  // Perform validation on the comment input
+  if (comment === '') {
+    // Show an error message if the comment is empty
+    // and prevent further processing
+    return;
+  }
+
+  // Make a POST request to submit the comment
+  try {
+    const postId = commentForm.dataset.postId; // Get the post ID from the form data attribute
+    const response = await fetch(`/post/${postId}/comment`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ comment }),
     });
-  }
-  
-  // Function to fetch blog posts from the server
-  function fetchBlogPosts() {
-    // Simulated API call to fetch blog posts
-    setTimeout(() => {
-      // Once the API call is complete, display the blog posts on the homepage
-      displayBlogPosts();
-    }, 1000);
-  }
-  
-  // Function to handle initial page load
-  function init() {
-    // Check if the user is on the dashboard page or the homepage
-    const isDashboard = window.location.pathname === '/dashboard';
-  
-    if (isDashboard) {
-      const dashboardContentDiv = document.getElementById('dashboardContent');
-      dashboardContentDiv.textContent = 'Welcome to the dashboard!'; // Simulated dashboard content
+
+    if (response.ok) {
+      // Comment submission successful, refresh the page
+      window.location.reload();
     } else {
-      fetchBlogPosts();
+      // Handle error response from the server
     }
+  } catch (error) {
+    // Handle network or fetch-related errors
   }
-  
-  // Call the init function when the page loads
-  window.addEventListener('load', init);
-  
+});

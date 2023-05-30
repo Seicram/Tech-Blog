@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./public/css/style.css">
+  <title>CMS Blog Site</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>CMS Blog Site</h1>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/auth/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    <!-- Homepage -->
+    <section class="content" id="home">
+      <!-- Existing blog posts -->
+      <div class="post">
+        <h2>Blog Post Title</h2>
+        <p class="post-meta">Posted by John Doe | September 1, 2023</p>
+        <p class="post-content">I like this blog.</p>
+      </div>
+      <!-- Add more existing blog posts here -->
+    </section>
+
+    <!-- Blog Post -->
+    <section class="content" id="blog-post">
+      <div class="post">
+        <h2>Blog Post Title</h2>
+        <p class="post-meta">Posted by John Doe | September 1, 2023</p>
+        <p class="post-content">This song has a great melody and ttune.</p>
+        <div class="comment-form">
+          <h3>Add a Comment</h3>
+          <form id="comment-form" data-post-id="1">
+            <textarea id="comment-input" placeholder="Enter your comment"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <div class="comments">
+          <!-- Display comments here -->
+          <div class="comment">
+            <p>Comment content</p>
+            <p class="comment-meta">Posted by Jane Doe | September 2, 2023</p>
+          </div>
+          <!-- Add more comments here -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 CMS Blog Site. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./public/js/script.js"></script>
+</body>
+
+</html>

@@ -202,6 +202,7 @@ function detectInstallationInstructions(fileExtensions, filesInFolder) {
   return installationTable;
 }
 
+
 async function promptUser() {
   return inquirer.prompt([
     {
