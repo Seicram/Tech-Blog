@@ -1,0 +1,17 @@
+<h2>Dashboard</h2>
+
+<!-- Existing blog posts -->
+{{#each posts}}
+<div class="post">
+  <h3>{{title}}</h3>
+  <p class="post-meta">Posted by {{author}} | {{formatDate createdAt}}</p>
+  <p>{{content}}</p>
+  <a href="/post/{{_id}}/edit">Edit</a>
+  <form action="/post/{{_id}}?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+  </form>
+</div>
+{{/each}}
+
+<!-- New blog post form -->
+<a href="/post/new">Create a New Blog Post</a>

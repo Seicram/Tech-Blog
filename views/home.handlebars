@@ -1,0 +1,11 @@
+<h2>Homepage</h2>
+
+<!-- Existing blog posts -->
+{{#each posts}}
+<div class="post">
+  <h3>{{title}}</h3>
+  <p class="post-meta">Posted by {{author}} | {{formatDate createdAt}}</p>
+  <p>{{content}}</p>
+  <a href="/post/{{_id}}">Read More</a>
+</div>
+{{/each}}
