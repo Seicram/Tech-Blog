@@ -1,5 +1,3 @@
-// homeControllers.js
-
 const User = require('../models/user');
 
 const renderHomePage = async (req, res) => {

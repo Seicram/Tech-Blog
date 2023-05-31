@@ -1,5 +1,3 @@
-// dashboardControllers.js
-
 const Post = require('../models/post');
 
 const renderDashboard = async (req, res) => {
@@ -21,12 +19,19 @@ const renderNewPost = (req, res) => {
 const handleNewPost = async (req, res) => {
   try {
     const { title, content } = req.body;
+    // Check if both title and content are provided
+    if (!title || !content) {
+      return res.redirect('/newpost');
+    }
+
     const post = new Post({
       title,
       content,
       author: req.user._id,
     });
     await post.save();
+
+    // Redirect back to the dashboard
     res.redirect('/dashboard');
   } catch (error) {
     console.error('Error occurred while creating a new post:', error);
@@ -64,7 +69,7 @@ const handleEditPost = async (req, res) => {
       return res.redirect('/dashboard');
     }
 
-    res.redirect(`/post/${postId}`);
+    res.redirect(`/dashboard`);
   } catch (error) {
     console.error('Error occurred while updating the post:', error);
     res.redirect('/dashboard');
@@ -83,8 +88,6 @@ const handleDeletePost = async (req, res) => {
   }
 };
 
-// Other controller functions
-
 module.exports = {
   renderDashboard,
   renderNewPost,
@@ -92,5 +95,4 @@ module.exports = {
   renderEditPost,
   handleEditPost,
   handleDeletePost,
-  // Other controller functions
 };

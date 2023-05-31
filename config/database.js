@@ -1,5 +1,3 @@
-// database.js
-
 const mongoose = require('mongoose');
 
 // Set up a database connection

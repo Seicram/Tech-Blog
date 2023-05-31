@@ -1,5 +1,3 @@
-// auth.js
-
 const bcrypt = require('bcrypt');
 const { User } = require('./database');
 

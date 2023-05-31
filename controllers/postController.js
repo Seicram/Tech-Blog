@@ -1,5 +1,3 @@
-// postControllers.js
-
 const Post = require('../models/post');
 
 const renderPost = async (req, res) => {
