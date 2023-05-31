@@ -5,6 +5,7 @@
 - [Usage](#usage)
 - [Installation](#installation)
 - [Credits](#credits)
+- [Links](#links)
 - [License](#license)
 
 ## Description
@@ -20,6 +21,7 @@ The following table provides an overview of the files included in the project:
 | File Type | Description |
 | --- | --- |
 | .js | This project includes JavaScript files that provide the interactive functionality of the web page. |
+| .html | This project includes an HTML file that represents the web page. |
 | .json |  |
 | .css | This project includes a CSS file that defines the styles and layout of the web page. |
 | .md | This project includes a Markdown file that provides documentation. |
@@ -32,13 +34,20 @@ The following table provides an overview of the files included in the project:
 
 | File Type | Description | Installation Instructions |
 | --- | --- | --- |
+| .html | This project includes an HTML file that represents the web page. | Create the file ".html" in the folder using the file extension. |
 | .js | This project includes JavaScript files that provide the interactive functionality of the web page. | Create the file ".js" in the folder using the file extension. |
 | .json |  | Install the package using npm install. |
 | .md | This project includes a Markdown file that provides documentation. | Create the file ".md" in the folder using the file extension. |
+| .gitignore | This project includes a Gitignore file that specifies which files to ignore. | Install the package using npm install. |
+| .git | This project includes a Git file that provides version control. | Install the package using npm install. |
 
 ## Credits
 
 This project was developed by Marcies Smith.
+
+## Links
+
+- [GitHub Repository](https://github.com/Seicram/Tech-Blog)
 
 ## License
 

@@ -1,50 +1,26 @@
+<!-- main.handlebars -->
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/styles.css">
-  <title>CMS Blog Site</title>
+  <title>My Blog</title>
+  <!-- Add your CSS and other head elements -->
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <h1>CMS Blog Site</h1>
-    </div>
-  </header>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container">
+  <header>
+    <nav>
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/dashboard">Dashboard</a></li>
-        {{#if user}}
-        <li><a href="/auth/logout">Logout</a></li>
-        {{else}}
-        <li><a href="/login">Login</a></li>
-        <li><a href="/signup">Sign Up</a></li>
-        {{/if}}
+        <li><a href="/logout">Log Out</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- Content -->
-  <div class="container">
+  <main>
     {{{body}}}
-  </div>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2023 CMS Blog Site. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="/js/script.js"></script>
+  <!-- Add your JavaScript and other script tags -->
 </body>
-
 </html>

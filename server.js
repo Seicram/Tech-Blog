@@ -1,37 +1,41 @@
+// server.js
+
 const express = require('express');
 const exphbs = require('express-handlebars');
-const path = require('path');
 const session = require('express-session');
+const path = require('path');
+const routes = require('./routes');
 
-// Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Set up Handlebars.js as the template engine
+// Set up session middleware
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: true,
+}));
+
+// Set up Handlebars as the template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// Middleware
+// Parse request body as JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Set up session middleware
-app.use(
-  session({
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-
 // Routes
-app.use('/', require('./controllers/homeController'));
-app.use('/auth', require('./controllers/authController'));
-app.use('/dashboard', require('./controllers/dashboardController'));
-app.use('/post', require('./controllers/postController'));
+app.use('/', routes);
+
+// Handle 404 errors
+app.use((req, res) => {
+  res.status(404).render('404');
+});
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

@@ -178,15 +178,22 @@ function detectInstallationInstructions(fileExtensions, filesInFolder) {
   installationTable += `| File Type | Description | Installation Instructions |\n`;
   installationTable += `| --- | --- | --- |\n`;
 
+  // Add .handlebars extension to fileExtensions array
+  fileExtensions.push({ extension: '.handlebars', description: 'Handlebars Template' });
+
   fileExtensions.forEach((fileType) => {
     const extension = fileType.extension;
     const fileDescription = generateSynopsis(fileType.description);
-    const isFileIncluded = filesInFolder.some((file) => path.extname(file) === extension);
+    const isFileIncluded = filesInFolder.some((file) => {
+      const fileName = file.substring(file.lastIndexOf('/') + 1); // Extract file name from path
+      const fileExtension = fileName.substring(fileName.lastIndexOf('.')).toLowerCase(); // Extract file extension
+      return fileExtension === extension;
+    });
 
     if (isFileIncluded) {
       let installationInstructions;
 
-      if (extension === '.js' || extension === '.css' || extension === '.html' || extension === '.md' || extension === '.txt' || extension === '.sql' || extension === '.handlebars') {
+      if (extension === '.js' || extension === '.css' || extension === '.html' || extension === '.handlebars' || extension === '.md' || extension === '.txt' || extension === '.sql') {
         installationInstructions = `Create the file "${extension}" in the folder using the file extension.`;
       } else {
         installationInstructions = `Install the package using npm install.`;
@@ -201,6 +208,11 @@ function detectInstallationInstructions(fileExtensions, filesInFolder) {
   }
   return installationTable;
 }
+
+
+
+
+
 
 
 async function promptUser() {
