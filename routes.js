@@ -2,27 +2,50 @@
 
 const express = require('express');
 const {
-  renderHomePage,
+  renderHomepage,
   renderSignup,
   handleSignup,
   renderLogin,
   handleLogin,
-  // Other controller functions
+  handleLogout,
 } = require('./controllers/homeControllers');
+
+const {
+  renderDashboard,
+  renderNewPost,
+  handleNewPost,
+  renderEditPost,
+  handleEditPost,
+  handleDeletePost,
+} = require('./controllers/dashboardControllers');
+
+const {
+  renderPost,
+  handleAddComment,
+} = require('./controllers/postControllers');
+
+const { requireAuth, checkLoggedIn } = require('./middleware/authMiddleware');
 
 const router = express.Router();
 
-// Homepage route
-router.get('/', renderHomePage);
+// Home routes
+router.get('/', checkLoggedIn, renderHomepage);
+router.get('/signup', checkLoggedIn, renderSignup);
+router.post('/signup', checkLoggedIn, handleSignup);
+router.get('/login', checkLoggedIn, renderLogin);
+router.post('/login', checkLoggedIn, handleLogin);
+router.get('/logout', requireAuth, handleLogout);
 
-// Signup routes
-router.get('/signup', renderSignup);
-router.post('/signup', handleSignup);
+// Dashboard routes
+router.get('/dashboard', requireAuth, renderDashboard);
+router.get('/newpost', requireAuth, renderNewPost);
+router.post('/newpost', requireAuth, handleNewPost);
+router.get('/editpost/:id', requireAuth, renderEditPost);
+router.post('/editpost/:id', requireAuth, handleEditPost);
+router.post('/deletepost/:id', requireAuth, handleDeletePost);
 
-// Login routes
-router.get('/login', renderLogin);
-router.post('/login', handleLogin);
-
-// Other routes and their corresponding controller functions
+// Post routes
+router.get('/post/:id', requireAuth, renderPost);
+router.post('/addcomment/:id', requireAuth, handleAddComment);
 
 module.exports = router;

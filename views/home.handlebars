@@ -1,11 +1,38 @@
-<h2>Homepage</h2>
+<!-- home.handlebars -->
 
-<!-- Existing blog posts -->
-{{#each posts}}
-<div class="post">
-  <h3>{{title}}</h3>
-  <p class="post-meta">Posted by {{author}} | {{formatDate createdAt}}</p>
-  <p>{{content}}</p>
-  <a href="/post/{{_id}}">Read More</a>
-</div>
-{{/each}}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Blog</title>
+  <!-- Add CSS and other head elements -->
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/logout">Log Out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Homepage</h1>
+    {{#if posts}}
+      <ul>
+        {{#each posts}}
+          <li>
+            <h2>{{title}}</h2>
+            <p>Created at: {{createdAt}}</p>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>No posts found.</p>
+    {{/if}}
+  </main>
+
+  <!-- Add JavaScript and other script tags -->
+</body>
+</html>
