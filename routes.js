@@ -1,3 +1,4 @@
+// Import modules and controllers
 const express = require('express');
 const router = express.Router();
 const homeControllers = require('./controllers/homeControllers');
@@ -16,12 +17,12 @@ router.post('/login', authControllers.handleLogin);
 router.get('/logout', authControllers.handleLogout);
 
 // Dashboard Routes
-router.get('/dashboard', dashboardControllers.renderDashboard);
-router.get('/dashboard/new', dashboardControllers.renderNewPost);
-router.post('/dashboard/new', dashboardControllers.handleNewPost);
-router.get('/dashboard/:id', dashboardControllers.renderEditPost);
-router.post('/dashboard/:id', dashboardControllers.handleUpdatePost);
-router.post('/dashboard/:id/delete', dashboardControllers.handleDeletePost);
+router.get('/dashboard', authControllers.authenticate, dashboardControllers.renderDashboard);
+router.get('/dashboard/new', authControllers.authenticate, dashboardControllers.renderNewPost);
+router.post('/dashboard/new', authControllers.authenticate, dashboardControllers.handleNewPost);
+router.get('/dashboard/:id', authControllers.authenticate, dashboardControllers.renderEditPost);
+router.post('/dashboard/:id', authControllers.authenticate, dashboardControllers.handleUpdatePost);
+router.post('/dashboard/:id/delete', authControllers.authenticate, dashboardControllers.handleDeletePost);
 
 // Post Routes
 router.get('/post/:id', postControllers.renderPost);

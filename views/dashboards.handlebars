@@ -1,17 +1,21 @@
-<h2>Dashboard</h2>
-
-<!-- Existing blog posts -->
-{{#each posts}}
-<div class="post">
-  <h3>{{title}}</h3>
-  <p class="post-meta">Posted by {{author}} | {{formatDate createdAt}}</p>
-  <p>{{content}}</p>
-  <a href="/post/{{_id}}/edit">Edit</a>
-  <form action="/post/{{_id}}?_method=DELETE" method="POST">
-    <button type="submit">Delete</button>
-  </form>
-</div>
-{{/each}}
-
-<!-- New blog post form -->
-<a href="/post/new">Create a New Blog Post</a>
+<main class="container mt-5 dashboard-box">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">Dashboard</h1>
+      <a href="/post/new" class="btn btn-primary">Create a New Blog Post</a>
+    </div>
+  </div>
+  <br>
+  <h1 class="mb-4">Your Dashboard:</h1>
+  {{#each posts}}
+    <div class="post">
+      <h3><a href="/post/{{_id}}" class="text-decoration-none text-reset">{{title}}</a></h3>
+      <p class="post-meta">Posted by {{author}} | {{formatDate createdAt}}</p>
+      <p>{{content}}</p>
+      <a href="/post/{{_id}}/edit" class="btn btn-warning">Edit</a>
+      <form action="/post/{{_id}}?_method=DELETE" method="POST" class="delete-form">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </div>
+  {{/each}}
+</main>

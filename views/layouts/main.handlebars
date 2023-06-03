@@ -1,24 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>My Blog</title>
-  <!-- Add your CSS and other head elements -->
-</head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/logout">Log Out</a></li>
-      </ul>
-    </nav>
-  </header>
+<html lang="en">
 
-  <main>
-    {{{body}}}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Blog</title>
+  <link rel="stylesheet" type="text/css" href="/css/jass.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+  <div id="home-page-banner">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/dashboard">Dashboard</a>
+      {{#if loggedIn}}
+      <button id="logout" class="btn-no-style">Logout</button>
+      {{else}}
+      <a href="/login">Login</a>
+      <a href="/sign-up">Sign Up</a>
+      {{/if}}
+    </nav>
+    <header>
+      <h1 id="tech-blog">The Tech Blog</h1>
+    </header>
+  </div>
+
+  <main class="green-color">
+    <div class="container">
+      {{{body}}}
+    </div>
   </main>
 
-  <!-- Add your JavaScript and other script tags -->
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+  <script src="/js/edit-post.js"></script>
+  <script src="/js/login.js"></script>
+  <script src="/js/new-post.js"></script>
+  <script src="/js/signup.js"></script>
+  <script src="/js/new-comment.js"></script>
+  <script src="/js/delete-post.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
+

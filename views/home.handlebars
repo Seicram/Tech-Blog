@@ -1,36 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My Blog</title>
-  <!-- Add CSS and other head elements -->
-</head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/logout">Log Out</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <h1>Homepage</h1>
-    {{#if posts}}
-      <ul>
-        {{#each posts}}
-          <li>
-            <h2>{{title}}</h2>
-            <p>Created at: {{createdAt}}</p>
-          </li>
-        {{/each}}
-      </ul>
-    {{else}}
-      <p>No posts found.</p>
-    {{/if}}
-  </main>
-
-  <!-- Add JavaScript and other script tags -->
-</body>
-</html>
+{{#if posts}}
+  {{#each posts}}
+    <div class="post-list post-boxes">
+      <h2 class="homepage-header">
+        <a href="/post/{{id}}">{{title}}</a>
+        <p>Created by {{user.username}} on {{format_date createdAt}}</p>
+      </h2>
+      <p id="content-bg">{{content}}</p>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No posts found.</p>
+{{/if}}
