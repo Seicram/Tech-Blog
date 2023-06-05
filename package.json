@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node app.js",
     "seed": "node seeds/seed.js"
   },
   "repository": {
@@ -19,12 +19,15 @@
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
+    "exphbs": "^1.2.0",
     "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
+    "express-handlebars": "^5.3.0",
     "express-session": "^1.17.1",
     "handlebars": "^4.7.7",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
+    "passport": "^0.6.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.6.2"
   },
   "bugs": {
     "url": "https://github.com/jacone626/tech-blog/issues"
