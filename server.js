@@ -16,11 +16,8 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
 // Set up session/cookie secret with Sequelize db connection
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  dialect: 'mysql',
-});
+const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
+
 
 const sess = {
   secret: 'super secret',
