@@ -21,11 +21,15 @@ The following table provides an overview of the files included in the project:
 | File Type | Description |
 | --- | --- |
 | .js | This project includes JavaScript files that provide the interactive functionality of the web page. |
-| .html | This project includes an HTML file that represents the web page. |
+| .sql | This project includes a SQL file that defines the database schema and seed data. |
 | .json |  |
-| .css | This project includes a CSS file that defines the styles and layout of the web page. |
 | .md | This project includes a Markdown file that provides documentation. |
+| .html | This project includes an HTML file that represents the web page. |
+| .node | This project includes a Node file that defines the project dependencies. |
+| .txt | This project includes a text file that provides documentation. |
 | .handlebars | This project includes a Handlebars file that defines the project dependencies. |
+| .c | This project includes a C file that defines the project dependencies. |
+| .css | This project includes a CSS file that defines the styles and layout of the web page. |
 
 
 ## Installation
@@ -34,12 +38,11 @@ The following table provides an overview of the files included in the project:
 
 | File Type | Description | Installation Instructions |
 | --- | --- | --- |
-| .html | This project includes an HTML file that represents the web page. | Create the file ".html" in the folder using the file extension. |
 | .js | This project includes JavaScript files that provide the interactive functionality of the web page. | Create the file ".js" in the folder using the file extension. |
-| .json |  | Install the package using npm install. |
+| .json |  | No npm packages detected. |
 | .md | This project includes a Markdown file that provides documentation. | Create the file ".md" in the folder using the file extension. |
-| .gitignore | This project includes a Gitignore file that specifies which files to ignore. | Install the package using npm install. |
-| .git | This project includes a Git file that provides version control. | Install the package using npm install. |
+| .gitignore | This project includes a Gitignore file that specifies which files to ignore. | No installation instructions available. |
+| .git | This project includes a Git file that provides version control. | No installation instructions available. |
 
 ## Credits
 
