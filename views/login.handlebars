@@ -1,17 +1,33 @@
-<div class="login-card">
-  <h2 class="page-title">Login</h2>
-  <form action="/auth/login" method="POST" class="form login-form">
+{{!-- User's view once the user clicks option from navigation to "login." Displays login form with 'login' button. Also
+has alternative 'sign up' button option to "sign up instead" --}}
+
+<h1 class="pl-5 pb-3 mt-n1 mb-4">The Tech Blog</h1>
+
+<div class="card mx-auto w-75 p-2">
+  <div class="card-header pb-1">
+    <h4>Login</h4>
+  </div>
+
+  <form id="login-form">
     <div class="form-group">
-      <label for="username">Username</label>
-      <input class="form-input" type="text" id="username" name="username" required>
+      <label class="form-label" for="username-login">Username:</label>
+      <input type="text" class="form-control" id="username-login" placeholder="Enter username" />
     </div>
+
     <div class="form-group">
-      <label for="password">Password</label>
-      <input class="form-input" type="password" id="password" name="password" required>
+      <label for="password-login">Password:</label>
+      <input type="password" class="form-control" id="password-login" placeholder="Enter password" />
     </div>
-    <div class="form-group">
-      <button class="btn btn-primary" type="submit">Login</button>
+
+    <div class="text-center mt-n4">
+      <button type="submit" class="btn btn-primary btn-sm" id="login-btn">Login!</button>
     </div>
   </form>
+
+  <div class="text-center">
+    <a type="button" id="switchPage" href="/signup">Sign Up Instead</a>
+  </div>
+
 </div>
-<p>Don't have an account? <a href="/signup">Sign up</a> instead.</p>
+
+<script src="./js/loginSignup.js"></script>

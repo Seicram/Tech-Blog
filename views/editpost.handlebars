@@ -1,18 +1,38 @@
-<section>
-  <div class="form-heading">
-    <h2>Edit Post</h2>
-  </div>
-  <div class="form-section">
-    <form action="/post/{{_id}}?_method=PUT" method="POST" class="edit-post-form">
-      <div class="edit-post-title-section">
-        <label class="p-3" for="post-title">Title</label>
-        <input type="text" name="post-title" id="post-title" value="{{title}}">
-      </div>
-      <div class="post-content">
-        <label class="m-2" for="post-content">Content</label>
-        <textarea class="entry-field mt-3" id="post-content" name="post-content">{{content}}</textarea>
-      </div>
-      <button type="submit" id="update-post-button">Update post</button>
+{{!-- User's view once the user clicks on an existing blog post from their dashboard. Shows user 'Edit Post' text box
+for title and content with 'Update Post' button option. Also shows 'Delete' button option to delete post.--}}
+
+<h1 class="pl-5 pb-3 mt-n1">Your Dashboard</h1>
+
+<div class="pl-5 py-3">
+    <a id="switchPage" href="/dashboard">
+        <small class="form-text text-muted">&larr; Back to Dashboard</small>
+    </a>
+</div>
+
+<div class="card mx-auto w-75 p-2">
+    <div class="card-header pb-1">
+        <h4>Edit Post</h4>
+    </div>
+
+    <form id="edit-post-form">
+        <div class="form-group">
+            <label class="form-label" for="edit-title">Title:</label>
+            <input type="text" class="form-control" id="edit-title" value="{{blogPost.title}}" />
+        </div>
+
+        <div class="form-group">
+            <label for="edit-contents">Content:</label>
+            <textarea type="text" class="form-control" id="edit-contents" rows="3">{{blogPost.contents}}</textarea>
+        </div>
+
+        <div class="text-center mt-n4">
+            <button type="submit" class="btn">Update</button>
+        </div>
+        <div class="text-center mt-n5">
+            <button type="button" class="btn" id="delete-btn">Delete</button>
+        </div>
     </form>
-  </div>
-</section>
+
+</div>
+
+<script src="/js/editPost.js"></script>

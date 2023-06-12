@@ -1,31 +1,36 @@
-const fs = require('fs');
-const path = require('path');
-const { Sequelize } = require('sequelize');
+// TODO: Define & lay out data for database (use sequelize and ORM)
+const User = require('./User');
+const BlogPost = require('./BlogPost');
+const Comment = require('./Comment');
 
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: 3306,
-  dialectOptions: {
-    decimalNumbers: true,
-  },
-});
+// BlogPost belongs to one User
+BlogPost.belongsTo(User, {
+    foreignKey: 'user_id',
+})
 
-const models = {};
+// User can have many BlogPosts
+User.hasMany(BlogPost, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+})
 
-// Read all model files from the current directory
-fs.readdirSync(__dirname)
-  .filter((file) => file !== 'index.js')
-  .forEach((file) => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    models[model.name] = model;
-  });
+// BlogPost can have many Comments
+// When we delete a BlogPost, make sure to delete the associated Comments
+BlogPost.hasMany(Comment, {
+    foreignKey: 'blogPost_id',
+    onDelete: 'CASCADE',
+})
 
-// Set up model associations, if needed
-Object.keys(models).forEach((modelName) => {
-  if (models[modelName].associate) {
-    models[modelName].associate(models);
-  }
-});
+// A Comment belongs to one User
+Comment.belongsTo(User, {
+    foreignKey: 'user_id',
+})
 
-module.exports = models;
+// A User can have many Comments
+User.hasMany(Comment, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+})
+
+// TODO: Export models as an object
+module.exports = { User, BlogPost, Comment };

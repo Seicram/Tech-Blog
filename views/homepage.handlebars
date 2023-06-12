@@ -1,0 +1,17 @@
+{{!-- User's view once the user clicks on the 'Home' nav link. Displays all existing blog posts from all users --}}
+
+<h1 class="pl-5 pb-3 mt-n1 mb-4">The Tech Blog</h1>
+
+{{#each blogPosts as |blogPost| }}
+<div class="card mx-auto w-75 p-2">
+    <div class="card-header">
+        <a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a>
+        <small class="d-inline-block float-right">
+            Posted by {{blogPost.user.username}} on {{format_date blogPost.date_created}}
+        </small>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{blogPost.contents}}</p>
+    </div>
+</div><br>
+{{/each}}

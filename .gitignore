@@ -1,13 +1,4 @@
 node_modules
 .env
 .DS_Store
-<<<<<<< HEAD
-=======
-
-# Ignore node_modules folder
-node_modules/
-
-# env file
-.env
->>>>>>> a625e30300130c15abca21f94546c1be48c14345
 readme.js

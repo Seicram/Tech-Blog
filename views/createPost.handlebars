@@ -1,0 +1,35 @@
+{{!-- User's view once they click on the "+New Post" button from the dashboard page. Displays "Your Dashboard"
+with "Create New Post" form with 'create' button option --}}
+
+<h1 class="pl-5 pb-3 mt-n1">Your Dashboard</h1>
+
+<div class="pl-5 py-3">
+  <a id="switchPage" href="/dashboard">
+    <small class="form-text text-muted">&larr; Back to Dashboard</small>
+  </a>
+</div>
+
+<div class="card mx-auto w-75 p-2">
+  <div class="card-header pb-1">
+    <h4>Create New Post</h4>
+  </div>
+
+  <form id="create-post-form">
+    <div class="form-group">
+      <label class="form-label" for="create-title">Title:</label>
+      <input type="text" class="form-control" id="create-title" placeholder="Type title here..." />
+    </div>
+
+    <div class="form-group">
+      <label for="create-contents">Content:</label>
+      <textarea type="text" class="form-control" id="create-contents" placeholder="Type content here..."
+        rows="3"></textarea>
+    </div>
+
+    <div class="text-center mt-n4">
+      <button type="submit" href="/api/blogPosts" class="btn btn-primary" id="create-btn">Create</button>
+    </div>
+  </form>
+</div>
+
+<script src="/js/createPost.js"></script>

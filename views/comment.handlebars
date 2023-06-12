@@ -1,0 +1,51 @@
+{{!-- User's view once user clicks on an existing blog post from the homepage. Displays the selected blog post and
+"comment" form with 'submit' button to submit comment --}}
+
+<h1 class="pl-5 pb-3 mt-n1">The Tech Blog</h1>
+
+{{!-- Back to Homepage arrow --}}
+<div class="pl-5 py-3">
+  <a id="switchPage" href="/">
+    <small class="form-text text-muted">&larr; Back to Homepage</small>
+  </a>
+</div>
+{{!-- Single Blog Post --}}
+<div class="card mx-auto w-75 p-2">
+  <div class="card-header">
+    <h4 class="p-0 m-0" id="comment-single-post">{{title}}</h4>
+    <small class="d-inline-block mt-n4">
+      Posted by {{user.username}} on {{format_date date_created}}
+    </small>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{contents}}</p>
+  </div>
+  {{!-- Create new Comment form --}}
+  {{#if logged_in}}
+  <form id="add-comment-form">
+    <div class="form-group text-center mt-3">
+      <input type="hidden" value="{{blogPost.id}}" />
+      <textarea class="form-input mx-auto w-100 pl-2 pt-2" id="add-comment" placeholder="Type comment here..."
+        rows="4"></textarea>
+    </div>
+
+    <div class="text-center mt-n4 mb-n3">
+      <button type="submit" class="btn btn-primary ">Submit Comment</button>
+    </div>
+  </form>
+  {{/if}}
+</div><br>
+{{!-- All User Comments --}}
+<div class="card-header comments mx-auto w-75 pb-1">
+  <h5 id="comment-header">User Comments</h5>
+</div>
+{{#each comments as |comment| }}
+<div class="card mx-auto w-75 p-3">
+  <div>
+    <p>{{comment.comment_body}}</p>
+    <small> &mdash; {{user.username}} on {{format_date date_created}}</small>
+  </div>
+</div>
+{{/each}}
+
+<script src="/js/comment.js"></script>

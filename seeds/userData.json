@@ -1,12 +1,9 @@
 [
     {
-      "username": "john_doe",
-      "password": "password123"
-    },
-    {
-      "username": "jane_smith",
-      "password": "password456"
-    }
-  ]
-  
+      "id": 1,
+      "name": "John Doe",
+      "email": ""
 
+    }
+   
+  ]

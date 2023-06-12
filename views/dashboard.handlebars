@@ -1,21 +1,29 @@
-<main class="container mt-5 dashboard-box">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="mb-4">Dashboard</h1>
-      <a href="/post/new" class="btn btn-primary">Create a New Blog Post</a>
-    </div>
+{{!-- User's view once they click on the dashboard from navigation link. Displays "Your Dashboard" with "New Post"
+button option and the all the user's personal existing blog posts. Includes option for user to click on existing
+blogpost to EDIT. --}}
+
+{{!-- Dashboard populates all newly created blogposts once user clicks the "Create" button from the 'Create New Post'
+page --}}
+
+<h1 class="pl-5 pb-3 mt-n1 mb-4">Your Dashboard</h1>
+
+<form class="mt-n4 ml-3" id="select-create-post">
+  <button href="/new" class="btn btn-lg" type="click">+ New Post</button>
+</form>
+
+{{#each blogPosts as |blogPost| }}
+<div class="card mx-auto w-75 p-2">
+  <div class="card-header">
+    <a href="/edit/{{blogPost.id}}">{{blogPost.title}}</a>
+    <small class="d-inline-block float-right">
+      Posted by {{../username}} on {{format_date blogPost.date_created}}
+    </small>
   </div>
-  <br>
-  <h1 class="mb-4">Your Dashboard:</h1>
-  {{#each posts}}
-    <div class="post">
-      <h3><a href="/post/{{_id}}" class="text-decoration-none text-reset">{{title}}</a></h3>
-      <p class="post-meta">Posted by {{author}} | {{formatDate createdAt}}</p>
-      <p>{{content}}</p>
-      <a href="/post/{{_id}}/edit" class="btn btn-warning">Edit</a>
-      <form action="/post/{{_id}}?_method=DELETE" method="POST" class="delete-form">
-        <button type="submit" class="btn btn-danger">Delete</button>
-      </form>
-    </div>
-  {{/each}}
-</main>
+  <div class="card-body">
+    <p class="card-text">{{blogPost.contents}}</p>
+  </div>
+</div><br>
+{{/each}}
+
+<script src="/js/newpostButton.js"></script>
+<script src="/js/editPost.js"></script>
