@@ -5,7 +5,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const Sequelize = require('sequelize');
+//const Sequelize = require('sequelize');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Initialize an instance of Express.js and specify the express PORT
@@ -16,11 +16,12 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
 // Set up session/cookie secret with Sequelize db connection
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  dialect: 'mysql',
-});
+//const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+//  host: process.env.DB_HOST,
+//   port: process.env.DB_PORT,
+//   dialect: 'mysql',
+// });
+const sequelize = require('./config/connection');
 
 const sess = {
   secret: 'super secret',
