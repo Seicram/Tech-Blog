@@ -25,11 +25,11 @@ The following table provides an overview of the files included in the project:
 | .json |  |
 | .md | This project includes a Markdown file that provides documentation. |
 | .html | This project includes an HTML file that represents the web page. |
-| .node | This project includes a Node file that defines the project dependencies. |
-| .txt | This project includes a text file that provides documentation. |
-| .handlebars | This project includes a Handlebars file that defines the project dependencies. |
-| .c | This project includes a C file that defines the project dependencies. |
 | .css | This project includes a CSS file that defines the styles and layout of the web page. |
+| .txt | This project includes a text file that provides documentation. |
+| .c | This project includes a C file that defines the project dependencies. |
+| .node | This project includes a Node file that defines the project dependencies. |
+| .handlebars | This project includes a Handlebars file that defines the project dependencies. |
 
 
 ## Installation
@@ -51,6 +51,7 @@ This project was developed by Marcies Smith.
 ## Links
 
 - [GitHub Repository](https://github.com/Seicram/Tech-Blog)
+- [Deployed Application](https://tech-blog-smith.herokuapp.com/)
 
 ## License
 
